@@ -3,6 +3,15 @@
  	easing: 'slide'
  });
 
+(function($){
+	 const today = new Date();
+	 const targetDate = new Date('2014-09-15');
+	 const diffTime = today - targetDate;
+	 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+	 $('#coffeeCnt').attr('data-value', diffDays);
+})(jQuery);
+
+
 (function($) {
 
 	"use strict";
@@ -349,16 +358,6 @@ window.onload = function() {
 
 })(jQuery);
 
-
-
-
-
-
-
-// this makes the height of each page equal to the height of the window
-// $('.page').css('height', $( window ).height());
-
-// scrollspy section
 (function($){
   //variable that will hold the href attr of the links in the menu
   var sections = [];
@@ -376,9 +375,7 @@ window.onload = function() {
 },500);
     hash($(this).attr('href'));
   });
-  
-  
-  
+
   //select all the anchors in the navbar one after another
   $navbara.each(function(){
    // and adds them in the sections variable
@@ -411,32 +408,3 @@ hash = function(h){
     location.hash = h;
   }
 }
-
-
-$(function() {
-
-  $(".progress").each(function() {
-
-    var value = $(this).attr('data-value');
-    var left = $(this).find('.progress-left .progress-bar');
-    var right = $(this).find('.progress-right .progress-bar');
-
-    if (value > 0) {
-      if (value <= 50) {
-        right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
-      } else {
-        right.css('transform', 'rotate(180deg)')
-        left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
-      }
-    }
-
-  })
-
-  function percentageToDegrees(percentage) {
-
-    return percentage / 100 * 360
-
-  }
-
-});
-
