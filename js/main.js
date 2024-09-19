@@ -3,15 +3,6 @@
  	easing: 'slide'
  });
 
-(function($){
-	 const today = new Date();
-	 const targetDate = new Date('2014-09-15');
-	 const diffTime = today - targetDate;
-	 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-	 $('#coffeeCnt').attr('data-value', diffDays);
-})(jQuery);
-
-
 (function($) {
 
 	"use strict";
@@ -53,28 +44,19 @@
 
    // Burger Menu
 	var burgerMenu = function() {
-
 		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
-
 			event.preventDefault();
-
 			if ( $('#ftco-nav').is(':visible') ) {
 				$(this).removeClass('active');
 			} else {
 				$(this).addClass('active');	
 			}
-
-			
-			
 		});
-
 	};
 	burgerMenu();
 
 
 	var onePageClick = function() {
-
-
 		$(document).on('click', '#ftco-nav a[href^="#"]', function (event) {
 	    event.preventDefault();
 
@@ -139,7 +121,7 @@
 
 
 	$('#dropdown04').on('show.bs.dropdown', function () {
-	  console.log('show');
+	  //console.log('show');
 	});
 
 	// scroll
@@ -182,9 +164,30 @@
 	};
 	scrollWindow();
 
-	
+	var codingCnt = function() {
+		const today = new Date();
+
+		const workStartDate = new Date('2014-09-15');
+		const blankStartDate = new Date('2019-05-01');
+		const blankEndDate = new Date('2019-09-30');
+		const blankDate = blankEndDate - blankStartDate;
+
+		const diffTime = today - workStartDate - blankDate;
+		const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+		$('#codingCnt').attr('data-number', diffDays);
+	}
+
+	var coffeeCnt = function() {
+		const today = new Date();
+		const targetDate = new Date('2014-09-15');
+		const diffTime = today - targetDate;
+		const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+		$('#coffeeCnt').attr('data-number', diffDays);
+	}
 
 	var counter = function() {
+		codingCnt();
+		coffeeCnt();
 		
 		$('#section-counter, .hero-wrap, .ftco-counter, .ftco-about').waypoint( function( direction ) {
 
