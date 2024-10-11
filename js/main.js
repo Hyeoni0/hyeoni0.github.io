@@ -164,9 +164,17 @@
 	};
 	scrollWindow();
 
-	var codingCnt = function() {
-		const today = new Date();
+	const today = new Date();
+	var crrCmpCnt = function() {
+		const workStartDate = new Date('2022-04-01');
+		const diffTime = today - workStartDate;
+		const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+		const diffYears = Math.floor((diffTime / (1000 * 60 * 60 * 24)) / 365);
+		const diffMonths = Math.floor((diffTime / (1000 * 60 * 60 * 24)  - (365 * diffYears)) / 30);
+		$('#crrCmpCnt').text("("+ diffYears +"년 " + diffMonths + "개월)")
+	}
 
+	var codingCnt = function() {
 		const workStartDate = new Date('2014-09-15');
 		const blankStartDate = new Date('2019-05-01');
 		const blankEndDate = new Date('2019-09-30');
@@ -178,7 +186,6 @@
 	}
 
 	var coffeeCnt = function() {
-		const today = new Date();
 		const targetDate = new Date('2014-09-15');
 		const diffTime = today - targetDate;
 		const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -186,6 +193,7 @@
 	}
 
 	var counter = function() {
+		crrCmpCnt();
 		codingCnt();
 		coffeeCnt();
 		
