@@ -192,10 +192,28 @@
 		$('#coffeeCnt').attr('data-number', diffDays);
 	}
 
+	var eventNumber = function() {
+		let lotto = [];
+		const bestNumber = [12, 34, 13, 18, 45,
+							14, 33, 27, 40, 37,
+							17, 19, 20, 1, 3,
+							21, 7, 43, 11, 31,
+							26, 38, 15, 10, 16];
+
+		for (let i = 0; i < 6; i++) {
+			let index = Math.floor(Math.random() * bestNumber.length);
+			lotto.push(bestNumber[index]);
+			bestNumber.splice(index, 1);
+		}
+		lotto.sort((a, b) => a - b);
+		console.log('로또 번호: ' + lotto.join(', '));
+	}
+
 	var counter = function() {
 		crrCmpCnt();
 		codingCnt();
 		coffeeCnt();
+		eventNumber();
 		
 		$('#section-counter, .hero-wrap, .ftco-counter, .ftco-about').waypoint( function( direction ) {
 
